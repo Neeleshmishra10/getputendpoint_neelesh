@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Configuration</title>
+</head>
+<body>
+    <h2>Fetch Configuration</h2>
+    <form id="configForm">
+        <label for="configId">Config To Load (Config_ID):</label><br>
+        <input type="text" id="configId" name="configId"><br><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('configForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var configId = document.getElementById('configId').value;
+            fetch(' ' + configId)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+@GetPutEndpoint_HostAddress = http://localhost:5166
+
+GET {{GetPutEndpoint_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

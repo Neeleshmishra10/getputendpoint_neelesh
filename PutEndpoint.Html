@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Configuration</title>
+</head>
+<body>
+    <h2>Add Configuration</h2>
+    <form id="addConfigForm">
+        <label for="configId">Config ID:</label><br>
+        <input type="text" id="configId" name="configId"><br>
+        <label for="remark">Remark:</label><br>
+        <input type="text" id="remark" name="remark"><br><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('addConfigForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            var configId = document.getElementById('configId').value;
+            var remark = document.getElementById('remark').value;
+            var data = {
+                configId: configId,
+                remark: remark
+            };
+            fetch('', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
